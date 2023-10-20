@@ -8,7 +8,7 @@
       "source": {"pr": false, "branch": "main", "trigger": "push"},
       "services": [
         {
-          "id": "blitz-app-7qoftK",
+          "id": "blitz-app",
           "name": "Blitz App",
           "buildType": "nixpacks",
           "cpu": 0.25,
@@ -22,7 +22,10 @@
           "startCommand": "blitz start",
           "dockerfilePath": "Dockerfile",
           "dockerContext": ".",
-          "envVariables": {},
+          "envVariables": {
+            "NODE_OPTIONS": "--openssl-legacy-provider",
+            "SESSION_SECRET_KEY": "a2f5fedb8c6c03c9d06c648da2c1a7c4"
+          },
           "autoscaling": {
             "cpuThreshold": 70,
             "memoryThreshold": 70,
@@ -35,7 +38,7 @@
           "port": 3000
         },
         {
-          "id": "database-ki3M7m",
+          "id": "database",
           "name": "Database",
           "type": "rds",
           "instanceSize": "db.t4g.micro",
